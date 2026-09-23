@@ -6,8 +6,9 @@ from random import randint
 
 #Function to print the board
 def print_board(board):
-    for row in board:
-        print (" ".join(row))
+    print("  " + " ".join(str(col) for col in range(len(board[0]))))
+    for row_num, row in enumerate(board):
+        print(str(row_num) + " " + " ".join(row))
        
 #Function to place a ship of ship_size length
 def place_ship(board,ship_size,ship_char,blank_char):
@@ -39,7 +40,7 @@ def place_ship(board,ship_size,ship_char,blank_char):
             cur_row = new_row+row_delt*each_cell
             cur_col = new_col+col_delt*each_cell
             #print("cur_row="+str(cur_row)+", cur_col="+str(cur_col))####
-            if cur_row+1 < len(board) and cur_col+1 <= len(board) and cur_row >=0 and cur_col >=0:
+            if 0 <= cur_row < len(board) and 0 <= cur_col < len(board):
                 if board[cur_row][cur_col] == blank_char:
                     ignore_this=1
                 else:
