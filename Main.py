@@ -44,15 +44,17 @@ for turn in range(turns):
     # Asks user for their guess
     print("Turn: "+str(turn+1)+" of "+str(turns))
     print_board(player_board)
-    try:
-        guess_row = int(input("Guess Row:"))
-        guess_col = int(input("Guess Col:"))
-    except ValueError:
-        print("Oops, that's not a valid number!")
-        
-        
-    if ((guess_row < 0 or guess_row > board_dim) or
-        (guess_col < 0 or guess_col > board_dim)):
+    while True:
+        try:
+            guess_row = int(input("Guess Row:"))
+            guess_col = int(input("Guess Col:"))
+            break
+        except ValueError:
+            print("Oops, that's not a valid number!")
+
+
+    if ((guess_row < 0 or guess_row >= board_dim) or
+        (guess_col < 0 or guess_col >= board_dim)):
         print("Oops, that's not even in the ocean!")
     elif (player_board[guess_row][guess_col] == hit_char or
         player_board[guess_row][guess_col] == miss_char):
